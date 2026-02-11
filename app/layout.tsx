@@ -4,6 +4,8 @@ import type { RootLayoutProps } from "./types";
 
 export const metadata = {
   title: "PropertyPulse | Find the Perfect Rental",
+  description: "Find your dream rental property",
+  keywords: "rentals, find rentals, find properties",
 };
 
 const MainLayout = ({ children }: RootLayoutProps) => {
