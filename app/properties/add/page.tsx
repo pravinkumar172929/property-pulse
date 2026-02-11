@@ -1,7 +1,13 @@
 import React from "react";
 
 const PropertyAddPage = () => {
-  return <div>PropertyAddPage</div>;
+  console.log("hello");
+
+  return (
+    <div>
+      <h1>PropertyAddPage</h1>
+    </div>
+  );
 };
 
 export default PropertyAddPage;
