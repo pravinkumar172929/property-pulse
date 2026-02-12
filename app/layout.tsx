@@ -1,6 +1,7 @@
 import React from "react";
 import "@/assets/styles/globals.css";
 import type { RootLayoutProps } from "./types";
+import Navbar from "@/components/Navbar";
 
 export const metadata = {
   title: "PropertyPulse | Find the Perfect Rental",
@@ -12,7 +13,8 @@ const MainLayout = ({ children }: RootLayoutProps) => {
   return (
     <html lang="en">
       <body>
-        <div>{children}</div>
+        <Navbar />
+        <main>{children}</main>
       </body>
     </html>
   );
