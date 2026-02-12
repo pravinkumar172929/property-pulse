@@ -13,6 +13,10 @@ const MainLayout = ({ children }: RootLayoutProps) => {
   return (
     <html lang="en">
       <body>
+        <div className="bg-red-500 text-white">Test</div>
+        <div className="bg-green-500 text-white p-10 text-3xl">
+          Tailwind Working
+        </div>
         <Navbar />
         <main>{children}</main>
       </body>
