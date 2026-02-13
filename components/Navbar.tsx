@@ -5,8 +5,10 @@ import profileDefault from "@/assets/images/profile.png";
 import Link from "next/link";
 import { FaGoogle } from "react-icons/fa";
 import { useState } from "react";
+import { usePathname } from "next/navigation";
 
 const Navbar = () => {
+  const pathname = usePathname();
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isProfileMenuOpen, setIsProfileMenuOpen] = useState(false);
   //   console.log("isMobileviewOpen => ", isMobileMenuOpen);
@@ -59,7 +61,9 @@ const Navbar = () => {
               <div className="flex space-x-2">
                 <Link
                   href="/"
-                  className="text-white bg-black hover:bg-gray-900 hover:text-white rounded-md px-3 py-2"
+                  className={`${
+                    pathname === "/" ? "bg-black" : " "
+                  } text-white hover:bg-gray-900 hover:text-white rounded-md px-3 py-2`}
                 >
                   Home
                 </Link>
