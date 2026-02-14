@@ -11,7 +11,7 @@ const Navbar = () => {
   const pathname = usePathname();
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isProfileMenuOpen, setIsProfileMenuOpen] = useState(false);
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [isLoggedIn, setIsLoggedIn] = useState(true);
 
   return (
     <nav className="bg-blue-700 border-b border-blue-500">
@@ -230,10 +230,11 @@ const Navbar = () => {
               </Link>
             )}
 
-            <button className="flex items-center text-white bg-gray-700 hover:bg-gray-900 hover:text-white rounded-md px-3 py-2 my-5">
-              {/* <FaGoogle className="text-white -mr-2" /> */}
-              <span>Login or Register</span>
-            </button>
+            {!isLoggedIn && (
+              <button className="flex items-center text-white bg-gray-700 hover:bg-gray-900 hover:text-white rounded-md px-3 py-2 my-5">
+                <span>Login or Register</span>
+              </button>
+            )}
           </div>
         </div>
       )}
