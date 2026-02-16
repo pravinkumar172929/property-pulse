@@ -6,7 +6,20 @@ const InfoBoxes = () => {
     <section>
       <div className="container-xl lg:container m-auto">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4 p-4 rounded-lg">
-          <div className="bg-gray-100 p-6 rounded-lg shadow-md">
+          <InfoBox
+            heading="For Renters"
+            backgroundColor="bg-gray-100"
+            textColor=""
+            buttonInfo={{
+              text: "Browse Properties",
+              link: "/properties",
+              backgroundColor: "bg-black",
+            }}
+          >
+            Find your dream rental property. Bookmark properties and contact
+            owners.
+          </InfoBox>
+          {/* <div className="bg-gray-100 p-6 rounded-lg shadow-md">
             <h2 className="text-2xl font-bold">For Renters</h2>
             <p className="mt-2 mb-4">
               Find your dream rental property. Bookmark properties and contact
@@ -18,7 +31,7 @@ const InfoBoxes = () => {
             >
               Browse Properties
             </a>
-          </div>
+          </div> */}
           <div className="bg-blue-100 p-6 rounded-lg shadow-md">
             <h2 className="text-2xl font-bold">For Property Owners</h2>
             <p className="mt-2 mb-4">
