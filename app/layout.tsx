@@ -2,6 +2,7 @@ import React from "react";
 import "@/assets/styles/globals.css";
 import type { RootLayoutProps } from "./types";
 import Navbar from "@/components/Navbar";
+import { Footer } from "@/components/Footer";
 
 export const metadata = {
   title: "PropertyPulse | Find the Perfect Rental",
@@ -15,6 +16,7 @@ const MainLayout = ({ children }: RootLayoutProps) => {
       <body>
         <Navbar />
         <main>{children}</main>
+        <Footer />
       </body>
     </html>
   );
