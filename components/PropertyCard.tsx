@@ -1,10 +1,15 @@
+import { PropertyCardProps } from "@/app/types";
+import Image from "next/image";
 import React from "react";
 
-export const PropertyCard = () => {
+export const PropertyCard = ({ property }: PropertyCardProps) => {
   return (
     <div className="rounded-xl shadow-md relative">
-      <img
-        src="images/properties/a1.jpg"
+      <Image
+        src={`/images/properties/${property.images[0]}`}
+        width={0}
+        height={0}
+        sizes="100vw"
         alt=""
         className="w-full h-auto rounded-t-xl"
       />
