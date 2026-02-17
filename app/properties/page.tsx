@@ -1,16 +1,16 @@
-"use client";
-import React from "react";
-import { useRouter, useParams } from "next/navigation";
+import properties from "@/properties.json";
 
 const PropertyPage = () => {
-  const router = useRouter();
-  const { id } = useParams();
-
   return (
-    <div>
-      <h1>PropertyPage</h1>
-      <button onClick={() => router.push("/")}>go home + {id}</button>
-    </div>
+    <section className="px-4 py-6">
+      <div className="container-xl lg:container m-auto px-4 py-6">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          {properties.map((property) => (
+            <h3 key={property._id}>{property.name}</h3>
+          ))}
+        </div>
+      </div>
+    </section>
   );
 };
 
