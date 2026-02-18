@@ -1,4 +1,5 @@
 import Hero from "@/components/Hero";
+import HomeProperty from "@/components/HomeProperty";
 import InfoBox from "@/components/InfoBox";
 import InfoBoxes from "@/components/InfoBoxes";
 
@@ -7,6 +8,7 @@ const HomePage = () => {
     <>
       <Hero />
       <InfoBoxes />
+      <HomeProperty />
     </>
   );
 };
