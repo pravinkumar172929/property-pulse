@@ -1,6 +1,13 @@
 import React from "react";
+import properties from "@/properties.json";
 
 const HomeProperty = () => {
+  const recentRandomProperties = properties
+    .sort(() => Math.random() - Math.random())
+    .slice(0, 3);
+
+  console.log("recentRandomProperties", recentRandomProperties);
+
   return (
     <section className="px-4 py-6">
       <div className="container-xl lg:container m-auto">
