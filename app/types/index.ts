@@ -33,6 +33,7 @@ export type Property = {
   rates: {
     weekly: number;
     monthly: number;
+    nightly: number;
   };
   seller_info: {
     name: string;
@@ -48,3 +49,5 @@ export type Property = {
 export type PropertyCardProps = {
   property: Property;
 };
+
+export type PropertyRateInput = Property["rates"];

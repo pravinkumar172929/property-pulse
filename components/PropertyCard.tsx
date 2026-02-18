@@ -1,4 +1,5 @@
 import { PropertyCardProps } from "@/app/types";
+import { getRateDisplay } from "@/utils";
 import Image from "next/image";
 import React from "react";
 import {
@@ -26,7 +27,7 @@ export const PropertyCard = ({ property }: PropertyCardProps) => {
           <h3 className="text-xl font-bold">{property.name}</h3>
         </div>
         <h3 className="absolute top-[10px] right-[10px] bg-white px-4 py-2 rounded-lg text-blue-500 font-bold text-right md:text-center lg:text-right">
-          $4,200/mo
+          ${getRateDisplay(property.rates)}
         </h3>
 
         <div className="flex justify-center gap-4 text-gray-500 mb-4">
