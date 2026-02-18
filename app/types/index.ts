@@ -51,3 +51,7 @@ export type PropertyCardProps = {
 };
 
 export type PropertyRateInput = Property["rates"];
+
+export type LoadingPageProps = {
+  loading: boolean;
+};
