@@ -47,15 +47,21 @@ export const PropertyCard = ({ property }: PropertyCardProps) => {
         </div>
 
         <div className="flex justify-center gap-4 text-green-900 text-sm mb-4">
-          <p>
-            <FaMoneyBill className="inline mr-2" /> Nightly
-          </p>
-          <p>
-            <FaMoneyBill className="inline mr-2" /> Weekly
-          </p>
-          <p>
-            <FaMoneyBill className="inline mr-2" /> Monthly
-          </p>
+          {property.rates.nightly && (
+            <p>
+              <FaMoneyBill className="inline mr-2" /> Nightly
+            </p>
+          )}
+          {property.rates.weekly && (
+            <p>
+              <FaMoneyBill className="inline mr-2" /> Weekly
+            </p>
+          )}
+          {property.rates.monthly && (
+            <p>
+              <FaMoneyBill className="inline mr-2" /> Monthly
+            </p>
+          )}
         </div>
 
         <div className="border border-gray-100 mb-5"></div>
