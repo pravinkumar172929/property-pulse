@@ -19,9 +19,13 @@ const HomeProperty = () => {
           Recent Properties
         </h2>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          {recentRandomProperties.map((property) => (
-            <PropertyCard key={property._id} property={property} />
-          ))}
+          {recentRandomProperties.length === 0 ? (
+            <p>No Properties Found</p>
+          ) : (
+            recentRandomProperties.map((property) => (
+              <PropertyCard key={property._id} property={property} />
+            ))
+          )}
         </div>
       </div>
     </section>
