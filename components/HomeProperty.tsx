@@ -11,7 +11,7 @@ const HomeProperty = () => {
     .sort(() => Math.random() - Math.random())
     .slice(0, 3);
 
-  console.log("recentRandomProperties", recentRandomProperties);
+  //   console.log("recentRandomProperties", recentRandomProperties);
 
   return (
     <>
