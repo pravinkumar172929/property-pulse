@@ -2,9 +2,22 @@ import { PropertyCard } from "@/components/PropertyCard";
 import { Property } from "@/app/types";
 import propertiesData from "@/properties.json";
 
-const properties = propertiesData as Property[];
+async function fetchProperties() {
+  try {
+    const res = await fetch(`http://localhost:3000/api/properties`);
+    if (!res.ok) {
+      throw new Error("Failed to fetch data");
+    }
+    return res.json();
+  } catch (error) {
+    console.log(error);
+  }
+}
 
-const PropertyPage = () => {
+// const properties = propertiesData as Property[];
+
+const PropertyPage = async () => {
+  const properties = await fetchProperties();
   return (
     <section className="px-4 py-6">
       <div className="container-xl lg:container m-auto px-4 py-6">
@@ -12,7 +25,7 @@ const PropertyPage = () => {
           <p>No Properties Found</p>
         ) : (
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            {properties.map((property) => (
+            {properties.map((property: Property) => (
               <PropertyCard key={property._id} property={property} />
             ))}
           </div>
