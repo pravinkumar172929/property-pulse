@@ -30,11 +30,9 @@ const PropertyDetails = ({ property }: PropertyDetailsProps) => {
         <div className="flex flex-col md:flex-row justify-around">
           <div className="flex items-center justify-center mb-4 border-b border-gray-200 md:border-b-0 pb-4 md:pb-0">
             <div className="text-gray-500 mr-2 font-bold">Nightly</div>
-            <div className="text-2xl font-bold">
+            <div className="text-2xl font-bold text-blue-500">
               {property.rates.nightly ? (
-                <div className="text-2xl font-bold text-blue-500">
-                  ${property.rates.nightly.toLocaleString()}
-                </div>
+                `$${property.rates.nightly.toLocaleString()}`
               ) : (
                 <FaTimes className="fa fa-xmark text-red-700" />
               )}
@@ -42,11 +40,23 @@ const PropertyDetails = ({ property }: PropertyDetailsProps) => {
           </div>
           <div className="flex items-center justify-center mb-4 border-b border-gray-200 md:border-b-0 pb-4 md:pb-0">
             <div className="text-gray-500 mr-2 font-bold">Weekly</div>
-            <div className="text-2xl font-bold text-blue-500">$1,100</div>
+            <div className="text-2xl font-bold text-blue-500">
+              {property.rates.weekly ? (
+                `$${property.rates.weekly.toLocaleString()}`
+              ) : (
+                <FaTimes className="fa fa-xmark text-red-700" />
+              )}
+            </div>
           </div>
           <div className="flex items-center justify-center mb-4 pb-4 md:pb-0">
             <div className="text-gray-500 mr-2 font-bold">Monthly</div>
-            <div className="text-2xl font-bold text-blue-500">$4,200</div>
+            <div className="text-2xl font-bold text-blue-500">
+              {property.rates.monthly ? (
+                `$${property.rates.monthly.toLocaleString()}`
+              ) : (
+                <FaTimes className="fa fa-xmark text-red-700" />
+              )}
+            </div>
           </div>
         </div>
       </div>
