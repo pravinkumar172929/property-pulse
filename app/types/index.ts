@@ -59,3 +59,7 @@ export type LoadingPageProps = {
 export type PropertyHeaderImageProps = {
   property: Property;
 };
+
+export type PropertyDetailsProps = {
+  property: Property;
+};
