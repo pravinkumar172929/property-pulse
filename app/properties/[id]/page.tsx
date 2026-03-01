@@ -46,11 +46,7 @@ const PropertyDetailsPage = () => {
   }
 
   return (
-    <>
-      {!isLoading && property && (
-        <PropertyHeaderImage image={property.images[0]} />
-      )}
-    </>
+    <>{!isLoading && property && <PropertyHeaderImage property={property} />}</>
   );
 };
 

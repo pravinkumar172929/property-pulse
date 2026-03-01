@@ -5,14 +5,14 @@ import Link from "next/link";
 import PropertyDetails from "./PropertyDetails";
 import { FaArrowLeft } from "react-icons/fa";
 
-const PropertyHeaderImage = ({ image }: PropertyHeaderImageProps) => {
+const PropertyHeaderImage = ({ property }: PropertyHeaderImageProps) => {
   return (
     <>
       <section>
         <div className="container-xl m-auto">
           <div className="grid grid-cols-1">
             <Image
-              src={`/images/properties/${image}`}
+              src={`/images/properties/${property.images[0]}`}
               alt=""
               className="object-cover h-[400px] w-full"
               width={0}

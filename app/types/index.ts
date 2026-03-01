@@ -57,5 +57,5 @@ export type LoadingPageProps = {
 };
 
 export type PropertyHeaderImageProps = {
-  image: string;
+  property: Property;
 };
