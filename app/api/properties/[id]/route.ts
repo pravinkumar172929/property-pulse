@@ -6,8 +6,6 @@ export const GET = async (
   request: NextRequest,
   { params }: { params: { id: string } }
 ) => {
-  //   console.log("***params", params);
-
   const { id } = await params;
   console.log("Params ID:", id);
   try {

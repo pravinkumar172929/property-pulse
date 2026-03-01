@@ -7,15 +7,11 @@ import { Property } from "@/app/types";
 
 const PropertyDetailsPage = () => {
   const params = useParams();
-  console.log("params =>", params);
 
   const { id } = useParams();
-  console.log("id => ", id);
 
   const [property, setProperty] = useState<Property | null>(null);
   const [isLoading, setIsLoading] = useState<boolean>(true);
-
-  console.log("property", property);
 
   useEffect(() => {
     const fetchPropertyData = async () => {
