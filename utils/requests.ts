@@ -17,7 +17,7 @@ async function fetchProperties() {
 }
 
 // fetch a single property
-async function fetchSingleProperty(id: string | string[]) {
+async function fetchSingleProperty(id: string) {
   try {
     if (!apiDomain) {
       return null;

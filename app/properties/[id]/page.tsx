@@ -8,7 +8,7 @@ import { Property } from "@/app/types";
 const PropertyDetailsPage = () => {
   const params = useParams();
 
-  const { id } = useParams();
+  const { id } = useParams() as { id: string };
 
   const [property, setProperty] = useState<Property | null>(null);
   const [isLoading, setIsLoading] = useState<boolean>(true);
