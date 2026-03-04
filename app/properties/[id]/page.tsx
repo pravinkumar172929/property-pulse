@@ -41,9 +41,7 @@ const PropertyDetailsPage = () => {
     );
   }
 
-  return (
-    <>{!isLoading && property && <PropertyHeaderImage property={property} />}</>
-  );
+  return <>{property && <PropertyHeaderImage property={property} />}</>;
 };
 
 export default PropertyDetailsPage;
