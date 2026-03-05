@@ -6,21 +6,16 @@ import PropertyHeaderImage from "@/components/PropertyHeaderImage";
 import { Property } from "@/app/types";
 
 const PropertyDetailsPage = () => {
-  const params = useParams();
-
   const { id } = useParams() as { id: string };
 
   const [property, setProperty] = useState<Property | null>(null);
-  const [isLoading, setIsLoading] = useState<boolean>(true);
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     const fetchPropertyData = async () => {
-      if (!id) {
-        return;
-      }
       try {
-        const property = await fetchSingleProperty(id);
-        setProperty(property);
+        const data = await fetchSingleProperty(id);
+        setProperty(data);
       } catch (error) {
         console.error("Error fetching property", error);
       } finally {
@@ -28,12 +23,14 @@ const PropertyDetailsPage = () => {
       }
     };
 
-    if (property === null) {
-      fetchPropertyData();
-    }
-  }, [id, property]);
+    fetchPropertyData();
+  }, [id]);
 
-  if (!property && !isLoading) {
+  if (isLoading) {
+    return <p className="text-center mt-10">Loading...</p>;
+  }
+
+  if (!property) {
     return (
       <h1 className="text-center text-2xl font-bold mt-10">
         Property Not Found
@@ -41,7 +38,7 @@ const PropertyDetailsPage = () => {
     );
   }
 
-  return <>{property && <PropertyHeaderImage property={property} />}</>;
+  return <PropertyHeaderImage property={property} />;
 };
 
 export default PropertyDetailsPage;
