@@ -55,3 +55,11 @@ export type PropertyRateInput = Property["rates"];
 export type LoadingPageProps = {
   loading: boolean;
 };
+
+export type PropertyHeaderImageProps = {
+  property: Property;
+};
+
+export type PropertyDetailsProps = {
+  property: Property;
+};
