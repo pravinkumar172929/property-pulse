@@ -4,7 +4,7 @@ import logo from "@/assets/images/logo.png";
 import profileDefault from "@/assets/images/profile.png";
 import Link from "next/link";
 import { FaGoogle } from "react-icons/fa";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { usePathname } from "next/navigation";
 import { signIn, signOut, useSession, getProviders } from "next-auth/react";
 
@@ -13,7 +13,18 @@ const Navbar = () => {
   const pathname = usePathname();
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isProfileMenuOpen, setIsProfileMenuOpen] = useState(false);
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [providers, setProviders] = useState(false);
+
+  useEffect(() => {
+    const setAuthProviders = async () => {
+      const res = await getProviders();
+      setProviders(res);
+    };
+
+    setAuthProviders();
+  }, []);
+
+  console.log("providers => ", providers);
 
   return (
     <nav className="bg-blue-700 border-b border-blue-500">
