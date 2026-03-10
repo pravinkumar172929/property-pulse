@@ -1,8 +1,10 @@
 import GoogleProvider from "next-auth/providers/google";
+import { NextAuthOptions } from "next-auth";
 import connectDB from "@/config/database";
 import User from "@/models/User";
+import { GoogleProfile } from "next-auth/providers/google";
 
-export const authOptions = {
+export const authOptions: NextAuthOptions = {
   providers: [
     GoogleProvider({
       clientId: process.env.GOOGLE_CLIENT_ID!,
@@ -16,32 +18,39 @@ export const authOptions = {
       },
     }),
   ],
+
   callbacks: {
-    // 1. invoke on successful login
     async signIn({ profile }) {
-      // connect to database
+      const googleProfile = profile as GoogleProfile;
+
+      if (!googleProfile?.email) return false;
+
       await connectDB();
-      //   check if user exists
-      const userExists = await User.findOne({ email: profile.email });
-      //   if not, add user to database, turnacate the name
-      const username = profile.name.slice(0, 20);
-      //   save in db
-      await User.create({
-        email: profile.email,
-        username,
-        image: profile.picture,
-      });
-      //   return true to sign in
+
+      const userExists = await User.findOne({ email: googleProfile.email });
+
+      if (!userExists) {
+        const username = googleProfile.name?.slice(0, 20);
+
+        await User.create({
+          email: googleProfile.email,
+          username,
+          image: googleProfile.picture,
+        });
+      }
+
       return true;
     },
 
-    // 2. modifies the session object
     async session({ session }) {
-      // get user from db
-      const user = User.findOne({ email: session.user.email });
-      //   assign user id to session
-      session.user.id = user._id.toString();
-      //   return session
+      if (!session.user?.email) return session;
+
+      const user = await User.findOne({ email: session.user.email });
+
+      if (user) {
+        session.user.id = user._id.toString();
+      }
+
       return session;
     },
   },
