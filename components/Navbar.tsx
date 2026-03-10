@@ -11,6 +11,8 @@ import { signIn, signOut, useSession, getProviders } from "next-auth/react";
 
 const Navbar = () => {
   const { data: session } = useSession();
+  const profileImage = session?.user?.image;
+
   const pathname = usePathname();
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isProfileMenuOpen, setIsProfileMenuOpen] = useState(false);
@@ -27,6 +29,7 @@ const Navbar = () => {
   }, []);
 
   console.log("providers => ", providers);
+  console.log("session => ", session);
 
   return (
     <nav className="bg-blue-700 border-b border-blue-500">
@@ -168,7 +171,7 @@ const Navbar = () => {
                     <span className="absolute -inset-1.5"></span>
                     <span className="sr-only">Open user menu</span>
                     <Image
-                      src={profileDefault}
+                      src={profileImage || profileDefault}
                       alt="Profile"
                       width={32}
                       height={32}
