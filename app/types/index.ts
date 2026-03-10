@@ -63,3 +63,7 @@ export type PropertyHeaderImageProps = {
 export type PropertyDetailsProps = {
   property: Property;
 };
+
+export type AuthProviderPros = {
+  children: React.ReactNode;
+};
