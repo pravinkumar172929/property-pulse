@@ -1,17 +1,15 @@
 import React from "react";
-import propertiesData from "@/properties.json";
 import { PropertyCard } from "./PropertyCard";
 import { Property } from "@/app/types";
 import Link from "next/link";
+import { fetchProperties } from "@/utils/requests";
 
-const properties = propertiesData as Property[];
+const HomeProperty = async () => {
+  const properties = await fetchProperties();
 
-const HomeProperty = () => {
   const recentRandomProperties = properties
     .sort(() => Math.random() - Math.random())
     .slice(0, 3);
-
-  console.log("recentRandomProperties", recentRandomProperties);
 
   return (
     <>
@@ -24,7 +22,7 @@ const HomeProperty = () => {
             {recentRandomProperties.length === 0 ? (
               <p>No Properties Found</p>
             ) : (
-              recentRandomProperties.map((property) => (
+              recentRandomProperties.map((property: Property) => (
                 <PropertyCard key={property._id} property={property} />
               ))
             )}
