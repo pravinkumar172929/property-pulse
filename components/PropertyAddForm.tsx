@@ -81,7 +81,18 @@ const PropertyAddForm = () => {
     });
   };
 
-  const handleImageChange = () => {};
+  const handleImageChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const { files } = e.target;
+    console.log("files => ", files);
+    if (!files) {
+      return;
+    }
+
+    setFields((prevFields) => ({
+      ...prevFields,
+      images: Array.from(files),
+    }));
+  };
 
   return (
     <form>
