@@ -36,13 +36,32 @@ const PropertyAddForm = () => {
     >
   ) => {
     const { name, value } = e.target;
-    console.log("name => ", e.target.name);
-    console.log("value => ", e.target.value);
-    setFields((prevFields) => ({
-      ...prevFields,
-      [name]: [value],
-    }));
+    // console.log("name => ", e.target.name);
+    // console.log("value => ", e.target.value);
+
+    if (name.includes(".")) {
+      const [outerKey, innerKey] = name.split(".");
+      console.log("outerkey => ", outerKey);
+      console.log("innerkey => ", innerKey);
+
+      setFields((prevFields) => ({
+        ...prevFields,
+        [outerKey]: {
+          ...(prevFields[outerKey as keyof PropertyFormData] as Record<
+            string,
+            any
+          >),
+          [innerKey]: value,
+        },
+      }));
+    } else {
+      setFields((prevFields) => ({
+        ...prevFields,
+        [name]: value,
+      }));
+    }
   };
+
   const handleAmenitiesChange = () => {};
   const handleImageChange = () => {};
 
