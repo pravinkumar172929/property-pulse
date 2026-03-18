@@ -28,6 +28,10 @@ const PropertyAddForm = () => {
     images: [],
   });
 
+  const handleChange = () => {};
+  const handleAmenitiesChange = () => {};
+  const handleImageChange = () => {};
+
   return (
     <form>
       <h2 className="text-3xl text-center font-semibold mb-6">Add Property</h2>
@@ -41,6 +45,8 @@ const PropertyAddForm = () => {
           name="type"
           className="border rounded w-full py-2 px-3"
           required
+          value={fields.type}
+          onChange={handleChange}
         >
           <option value="Apartment">Apartment</option>
           <option value="Condo">Condo</option>
@@ -62,6 +68,8 @@ const PropertyAddForm = () => {
           className="border rounded w-full py-2 px-3 mb-2"
           placeholder="eg. Beautiful Apartment In Miami"
           required
+          value={fields.name}
+          onChange={handleChange}
         />
       </div>
       <div className="mb-4">
@@ -77,6 +85,8 @@ const PropertyAddForm = () => {
           className="border rounded w-full py-2 px-3"
           rows={4}
           placeholder="Add an optional description of your property"
+          value={fields.description}
+          onChange={handleChange}
         ></textarea>
       </div>
 
@@ -88,6 +98,8 @@ const PropertyAddForm = () => {
           name="location.street"
           className="border rounded w-full py-2 px-3 mb-2"
           placeholder="Street"
+          value={fields.location.street}
+          onChange={handleChange}
         />
         <input
           type="text"
@@ -96,6 +108,8 @@ const PropertyAddForm = () => {
           className="border rounded w-full py-2 px-3 mb-2"
           placeholder="City"
           required
+          value={fields.location.city}
+          onChange={handleChange}
         />
         <input
           type="text"
@@ -104,6 +118,8 @@ const PropertyAddForm = () => {
           className="border rounded w-full py-2 px-3 mb-2"
           placeholder="State"
           required
+          value={fields.location.state}
+          onChange={handleChange}
         />
         <input
           type="text"
@@ -111,6 +127,8 @@ const PropertyAddForm = () => {
           name="location.zipcode"
           className="border rounded w-full py-2 px-3 mb-2"
           placeholder="Zipcode"
+          value={fields.location.zipcode}
+          onChange={handleChange}
         />
       </div>
 
@@ -125,6 +143,8 @@ const PropertyAddForm = () => {
             name="beds"
             className="border rounded w-full py-2 px-3"
             required
+            value={fields.beds}
+            onChange={handleChange}
           />
         </div>
         <div className="w-full sm:w-1/3 px-2">
@@ -137,6 +157,8 @@ const PropertyAddForm = () => {
             name="baths"
             className="border rounded w-full py-2 px-3"
             required
+            value={fields.baths}
+            onChange={handleChange}
           />
         </div>
         <div className="w-full sm:w-1/3 pl-2">
@@ -152,6 +174,8 @@ const PropertyAddForm = () => {
             name="square_feet"
             className="border rounded w-full py-2 px-3"
             required
+            value={fields.square_feet}
+            onChange={handleChange}
           />
         </div>
       </div>
