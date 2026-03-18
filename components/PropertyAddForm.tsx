@@ -36,13 +36,9 @@ const PropertyAddForm = () => {
     >
   ) => {
     const { name, value } = e.target;
-    // console.log("name => ", e.target.name);
-    // console.log("value => ", e.target.value);
 
     if (name.includes(".")) {
       const [outerKey, innerKey] = name.split(".");
-      console.log("outerkey => ", outerKey);
-      console.log("innerkey => ", innerKey);
 
       setFields((prevFields) => ({
         ...prevFields,
@@ -62,7 +58,29 @@ const PropertyAddForm = () => {
     }
   };
 
-  const handleAmenitiesChange = () => {};
+  const handleAmenitiesChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const { value, checked } = e.target;
+    console.log("value => ", value);
+    console.log("checked => ", checked);
+
+    setFields((prevFields) => {
+      let updatedAmenities;
+
+      if (checked) {
+        updatedAmenities = [...prevFields.amenities, value];
+      } else {
+        updatedAmenities = prevFields.amenities.filter(
+          (item) => item !== value
+        );
+      }
+
+      return {
+        ...prevFields,
+        amenities: updatedAmenities,
+      };
+    });
+  };
+
   const handleImageChange = () => {};
 
   return (
