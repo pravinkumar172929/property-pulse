@@ -16,7 +16,7 @@ const PropertyAddForm = () => {
     beds: "3",
     baths: "2",
     square_feet: "1800",
-    amenities: [],
+    amenities: ["Free Parking"],
     rates: {
       weekly: "",
       monthly: "2000",
