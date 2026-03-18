@@ -30,7 +30,19 @@ const PropertyAddForm = () => {
     images: [],
   });
 
-  const handleChange = () => {};
+  const handleChange = (
+    e: React.ChangeEvent<
+      HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement
+    >
+  ) => {
+    const { name, value } = e.target;
+    console.log("name => ", e.target.name);
+    console.log("value => ", e.target.value);
+    setFields((prevFields) => ({
+      ...prevFields,
+      [name]: [value],
+    }));
+  };
   const handleAmenitiesChange = () => {};
   const handleImageChange = () => {};
 
