@@ -60,8 +60,6 @@ const PropertyAddForm = () => {
 
   const handleAmenitiesChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { value, checked } = e.target;
-    console.log("value => ", value);
-    console.log("checked => ", checked);
 
     setFields((prevFields) => {
       let updatedAmenities;
@@ -83,7 +81,7 @@ const PropertyAddForm = () => {
 
   const handleImageChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { files } = e.target;
-    console.log("files => ", files);
+
     if (!files) {
       return;
     }
