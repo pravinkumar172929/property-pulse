@@ -68,29 +68,26 @@ export type AuthProviderPros = {
   children: React.ReactNode;
 };
 
-export type PropertyFormData = {
-  type: string;
-  name: string;
-  description: string;
-  location: {
-    street: string;
-    city: string;
-    state: string;
-    zipcode: string;
-  };
+export type PropertyFormData = Omit<
+  Property,
+  | "_id"
+  | "owner"
+  | "createdAt"
+  | "updatedAt"
+  | "images"
+  | "beds"
+  | "baths"
+  | "square_feet"
+  | "rates"
+  | "is_featured"
+> & {
   beds: string;
   baths: string;
   square_feet: string;
-  amenities: string[];
   rates: {
     weekly: string;
     monthly: string;
     nightly: string;
-  };
-  seller_info: {
-    name: string;
-    email: string;
-    phone: string;
   };
   images: File[];
 };
