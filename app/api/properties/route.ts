@@ -16,7 +16,7 @@ export const GET = async () => {
   }
 };
 
-export const POST = async (request) => {
+export const POST = async (request: Request) => {
   try {
     const formData = await request.formData();
     console.log(formData.get("name"));
