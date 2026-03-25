@@ -16,8 +16,11 @@ export const GET = async () => {
   }
 };
 
-export const POST = async () => {
+export const POST = async (request) => {
   try {
+    const formData = await request.formData();
+    console.log(formData.get("name"));
+
     return new Response(JSON.stringify({ message: "Success" }), {
       status: 200,
     });
