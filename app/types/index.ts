@@ -67,3 +67,27 @@ export type PropertyDetailsProps = {
 export type AuthProviderPros = {
   children: React.ReactNode;
 };
+
+export type PropertyFormData = Omit<
+  Property,
+  | "_id"
+  | "owner"
+  | "createdAt"
+  | "updatedAt"
+  | "images"
+  | "beds"
+  | "baths"
+  | "square_feet"
+  | "rates"
+  | "is_featured"
+> & {
+  beds: string;
+  baths: string;
+  square_feet: string;
+  rates: {
+    weekly: string;
+    monthly: string;
+    nightly: string;
+  };
+  images: File[];
+};
