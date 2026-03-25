@@ -15,3 +15,13 @@ export const GET = async () => {
     return new Response("Something went wrong!", { status: 500 });
   }
 };
+
+export const POST = async () => {
+  try {
+    return new Response(JSON.stringify({ message: "Success" }), {
+      status: 200,
+    });
+  } catch (error) {
+    return new Response("Failed to add property", { status: 500 });
+  }
+};
