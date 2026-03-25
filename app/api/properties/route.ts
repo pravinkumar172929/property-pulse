@@ -19,6 +19,11 @@ export const GET = async () => {
 export const POST = async (request: Request) => {
   try {
     const formData = await request.formData();
+
+    const amenities = formData.getAll("amenities");
+    const images = formData.getAll("images");
+    console.log("amenities => ", amenities);
+    console.log("images => ", images);
     console.log(formData.get("name"));
 
     return new Response(JSON.stringify({ message: "Success" }), {
