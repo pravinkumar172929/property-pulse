@@ -29,9 +29,9 @@ export const POST = async (request: Request) => {
       return new Response("User id is required", { status: 401 });
     }
 
-    const userName = sessionUser.user.name;
+    const userId = sessionUser.user.id;
 
-    console.log("userName => ", userName);
+    console.log("userId => ", userId);
 
     const formData = await request.formData();
 
@@ -66,7 +66,7 @@ export const POST = async (request: Request) => {
         phone: formData.get("seller_info.phone"),
       },
       images,
-      owner: userName,
+      owner: userId,
     };
 
     console.log(propertyData);
