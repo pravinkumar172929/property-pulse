@@ -42,38 +42,52 @@ export const POST = async (request: Request) => {
     // console.log(formData.get("name"));
 
     const propertyData = {
-      type: formData.get("type"),
-      name: formData.get("name"),
-      description: formData.get("description"),
+      type: formData.get("type") as string,
+      name: formData.get("name") as string,
+      description: formData.get("description") as string,
+
       location: {
-        street: formData.get("location.street"),
-        city: formData.get("location.city"),
-        state: formData.get("location.state"),
-        zipcode: formData.get("location.zipcode"),
+        street: formData.get("location.street") as string,
+        city: formData.get("location.city") as string,
+        state: formData.get("location.state") as string,
+        zipcode: formData.get("location.zipcode") as string,
       },
-      beds: formData.get("beds"),
-      baths: formData.get("baths"),
-      square_feet: formData.get("square_feet"),
-      amenities,
+
+      beds: Number(formData.get("beds")),
+      baths: Number(formData.get("baths")),
+      square_feet: Number(formData.get("square_feet")),
+
+      amenities: amenities as string[],
+
       rates: {
-        weekly: formData.get("rates.weekly"),
-        monthly: formData.get("rates.monthly"),
-        nightly: formData.get("rates.nightly"),
+        weekly: Number(formData.get("rates.weekly") || 0),
+        monthly: Number(formData.get("rates.monthly") || 0),
+        nightly: Number(formData.get("rates.nightly") || 0),
       },
+
       seller_info: {
-        name: formData.get("seller_info.name"),
-        email: formData.get("seller_info.email"),
-        phone: formData.get("seller_info.phone"),
+        name: formData.get("seller_info.name") as string,
+        email: formData.get("seller_info.email") as string,
+        phone: formData.get("seller_info.phone") as string,
       },
-      images,
-      owner: userId,
+
+      images: [], // TEMP
+
+      owner: sessionUser.user.id,
     };
 
     console.log(propertyData);
 
-    return new Response(JSON.stringify({ message: "Success" }), {
-      status: 200,
-    });
+    const newProperty = new Property(propertyData);
+    await newProperty.save();
+
+    return Response.redirect(
+      `${process.env.NEXTAUTH_URL}/properties/${newProperty._id}`
+    );
+
+    // return new Response(JSON.stringify({ message: "Success" }), {
+    //   status: 200,
+    // });
   } catch (error) {
     return new Response("Failed to add property", { status: 500 });
   }
