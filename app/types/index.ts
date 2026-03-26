@@ -91,3 +91,7 @@ export type PropertyFormData = Omit<
   };
   images: File[];
 };
+
+export type PropertyImagesProps = {
+  images: string[];
+};
