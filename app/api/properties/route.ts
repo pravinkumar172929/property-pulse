@@ -1,7 +1,6 @@
 import connectDB from "@/config/database";
 import Property from "@/models/Property";
-import { getServerSession } from "next-auth/next";
-import { authOptions } from "@/utils/authOptions";
+import { getSessionUser } from "@/utils/getSessionUser";
 
 export const GET = async () => {
   connectDB();
@@ -22,14 +21,15 @@ export const POST = async (request: Request) => {
   try {
     await connectDB();
 
-    const session = await getServerSession(authOptions);
-    console.log("session => ", session);
+    const sessionUser = await getSessionUser();
 
-    if (!session) {
-      return new Response("Unauthorized", { status: 401 });
+    console.log("sessionUser => ", sessionUser);
+
+    if (!sessionUser || !sessionUser.user) {
+      return new Response("User id is required", { status: 401 });
     }
 
-    const userName = session.user?.name;
+    const userName = sessionUser.user.name;
 
     console.log("userName => ", userName);
 
