@@ -4,6 +4,7 @@ import { useParams } from "next/navigation";
 import { fetchSingleProperty } from "@/utils/requests";
 import PropertyHeaderImage from "@/components/PropertyHeaderImage";
 import { Property } from "@/app/types";
+import PropertyImages from "@/components/PropertyImages";
 
 const PropertyDetailsPage = () => {
   const { id } = useParams() as { id: string };
@@ -38,7 +39,12 @@ const PropertyDetailsPage = () => {
     );
   }
 
-  return <PropertyHeaderImage property={property} />;
+  return (
+    <>
+      <PropertyHeaderImage property={property} />
+      <PropertyImages images={property.images} />
+    </>
+  );
 };
 
 export default PropertyDetailsPage;
